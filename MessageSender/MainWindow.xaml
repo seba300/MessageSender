@@ -1,0 +1,15 @@
+﻿<Window x:Class="MessageSender.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MessageSender"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TextBlock x:Name="Cmds" HorizontalAlignment="Left" Margin="520,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="240" Width="205"><Run Text="commands"/></TextBlock>
+        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="20" Margin="85,80,0,0" TextWrapping="Wrap" Text="number" VerticalAlignment="Top" Width="110"/>
+        <TextBox x:Name="Msg" HorizontalAlignment="Left" Height="80" Margin="85,125,0,0" TextWrapping="Wrap" Text="msg" VerticalAlignment="Top" Width="330"/>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="85,225,0,0"/>
+    </Grid>
+</Window>
