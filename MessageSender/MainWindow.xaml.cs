@@ -17,18 +17,22 @@ using System.Windows.Shapes;
 
 namespace MessageSender
 {
+
+   
+
     public partial class MainWindow : Window
     {
         public SerialPort _serialPort;
         public MainWindow()
         {
-            SetPort();
-            OpenPort();
-            GsmCommands();
-            ShowGsmResponse();
-            ClosePort();
+            //SetPort();
+            //OpenPort();
+            //GsmCommands();
+            //ShowGsmResponse();
+            //ClosePort();
             
         }
+
         public void SetPort()
         {
             _serialPort = new SerialPort();
