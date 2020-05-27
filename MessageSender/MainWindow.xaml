@@ -3,32 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
         xmlns:local="clr-namespace:MessageSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="20" Margin="85,80,0,0" TextWrapping="Wrap" Text="number" VerticalAlignment="Top" Width="110"/>
         <TextBox x:Name="Msg" HorizontalAlignment="Left" Height="80" Margin="85,125,0,0" TextWrapping="Wrap" Text="msg" VerticalAlignment="Top" Width="330" MaxLength="160"/>
-        <Button x:Name="SendMsg" Content="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="85,225,0,0"/>
-        <ListBox Name="lb" Width="100" Height="55" SelectionMode="Single" Margin="460,55,232,309.333">
-            <ListBoxItem>Item 1</ListBoxItem>
-            <ListBoxItem>Item 2</ListBoxItem>
-            <ListBoxItem>Item 3</ListBoxItem>
-            <ListBoxItem>Item 4</ListBoxItem>
-            <ListBoxItem>Item 5</ListBoxItem>
-            <ListBoxItem>Item 6</ListBoxItem>
-            <ListBoxItem>Item 7</ListBoxItem>
-            <ListBoxItem>Item 8</ListBoxItem>
-            <ListBoxItem>Item 9</ListBoxItem>
-            <ListBoxItem>Item 10</ListBoxItem>
-        </ListBox>
-        <toolkit:AutoCompleteBox 
-  ItemsSource="{Binding Clients}" 
-  ValueMemberPath="FullName" 
-  FilterMode="Contains" 
-  Text="{Binding ClientName}" 
-  IsTextCompletionEnabled="True"/>
-        
+        <Button x:Name="SendMsg" Content="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="85,225,0,0" Click="SendMsg_Click"/>
+        <ComboBox x:Name="cv" HorizontalAlignment="Left" Margin="85,68,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" 
+                  ItemsSource="{Binding Path=PeopleList}"
+                  DisplayMemberPath="Name"
+                  />
+
+
+
+
     </Grid>
 </Window>
