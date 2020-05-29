@@ -34,7 +34,8 @@ namespace MessageSender
 
         private void SendMsg_Click(object sender, RoutedEventArgs e)
         {
-           
+            string a = cv.SelectedValue.ToString();
+            MessageBox.Show(a);
         }
     }
 }

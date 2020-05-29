@@ -12,6 +12,7 @@
         <ComboBox x:Name="cv" HorizontalAlignment="Left" Margin="85,68,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" 
                   ItemsSource="{Binding Path=PeopleList}"
                   DisplayMemberPath="Name"
+                  SelectedValuePath="PhoneNumber"
                   />
 
 
