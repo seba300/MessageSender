@@ -39,16 +39,15 @@ namespace MessageSender
             string a = PhoneBook.SelectedValue.ToString();
             MessageBox.Show(a);
         }
-        public void TODO()
+        public void EncodeToUnicode(string message)
         {
             UnicodeEncoding uni = new UnicodeEncoding();
-            byte[] encodedBytes = uni.GetBytes("+48502297745");
+            byte[] encodedBytes = uni.GetBytes(message);
             string text = "";
             for (int i = 0; i < encodedBytes.Length; i += 2)
             {
                 text += string.Format("{0:X2}", encodedBytes[i + 1]) + string.Format("{0:X2}", encodedBytes[i]);
             }
-
         }
     }
 }

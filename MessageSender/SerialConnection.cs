@@ -59,7 +59,20 @@ namespace MessageSender
         public void GsmCommands()
         {
             _SerialPort.WriteLine("AT");
-            Thread.Sleep(100);
+            Thread.Sleep(200);
+            _SerialPort.ReadLine();
+
+            _SerialPort.WriteLine("AT+CMGF=1");
+            Thread.Sleep(200);
+            _SerialPort.ReadLine();
+
+            _SerialPort.WriteLine("AT+CSMP=17,168,2,25");
+            Thread.Sleep(200);
+            _SerialPort.ReadLine();
+
+            _SerialPort.WriteLine("AT+CSCS=\"UCS2\"");
+            Thread.Sleep(200);
+            _SerialPort.ReadLine();
         }
 
         //Show gsm response
