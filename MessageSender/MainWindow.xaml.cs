@@ -24,17 +24,19 @@ namespace MessageSender
        
         public MainWindow()
         {
+            UploadBookList();
+
+        }
+        private void UploadBookList()
+        {
             Query query = new Query();
             PeopleList = query.GetEmployeeData();
-           
-            DataContext=this;
-
-
+            DataContext = this;
         }
 
         private void SendMsg_Click(object sender, RoutedEventArgs e)
         {
-            string a = cv.SelectedValue.ToString();
+            string a = PhoneBook.SelectedValue.ToString();
             MessageBox.Show(a);
         }
     }
