@@ -25,8 +25,9 @@ namespace MessageSender
         public MainWindow()
         {
             UploadBookList();
-
         }
+
+        //Complete people list
         private void UploadBookList()
         {
             Query query = new Query();
@@ -36,18 +37,12 @@ namespace MessageSender
 
         private void SendMsg_Click(object sender, RoutedEventArgs e)
         {
-            string a = PhoneBook.SelectedValue.ToString();
-            MessageBox.Show(a);
-        }
-        public void EncodeToUnicode(string message)
-        {
-            UnicodeEncoding uni = new UnicodeEncoding();
-            byte[] encodedBytes = uni.GetBytes(message);
-            string text = "";
-            for (int i = 0; i < encodedBytes.Length; i += 2)
-            {
-                text += string.Format("{0:X2}", encodedBytes[i + 1]) + string.Format("{0:X2}", encodedBytes[i]);
-            }
+            //Combobox hidden number  
+            string number = PhoneBook.SelectedValue.ToString();
+            string message = Msg.Text;
+
+            SerialConnection serialConnection = new SerialConnection();
+            serialConnection.SendMsg(number, message);
         }
     }
 }
