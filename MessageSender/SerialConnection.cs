@@ -62,55 +62,42 @@ namespace MessageSender
             //Test connection with card
             _SerialPort.WriteLine("AT");
             Thread.Sleep(200);
-            _SerialPort.ReadLine();
+            _SerialPort.ReadLine(); //AT
+            _SerialPort.ReadLine(); //OK/ERROR
+
+            //Clean message storage
+            _SerialPort.WriteLine("AT+CMGD=1,4");
+            Thread.Sleep(200);
+            _SerialPort.ReadLine();//OK/ERROR
 
             //Set sms text mode
             _SerialPort.WriteLine("AT+CMGF=1");
             Thread.Sleep(200);
-            _SerialPort.ReadLine();
+            _SerialPort.ReadLine();//OK/ERROR
 
             //Set modem parameters
             _SerialPort.WriteLine("AT+CSMP=17,168,2,25");
             Thread.Sleep(200);
-            _SerialPort.ReadLine();
+            _SerialPort.ReadLine();//OK/ERROR
 
             //Set Character set to UCS2 - 16-bit universal multiple-octet coded character set
             _SerialPort.WriteLine("AT+CSCS=\"UCS2\"");
             Thread.Sleep(200);
-            _SerialPort.ReadLine();
-
-            //After earlier line try this ////confirm the setting if they wouldn't be confirmed
-            //_SerialPort.WriteLine("AT + CSCS ?");
-            //_SerialPort.ReadLine();
+            _SerialPort.ReadLine();//OK/ERROR
         }
 
         //Send message
         public void SendMsg(string num, string msg)
         {
-            char CtrlZ = (char)26;
-            char CR = (char)13;
             string message = EncodeToUnicode(msg);
             string number = EncodeToUnicode(num);
 
             //Write phone number
-            _SerialPort.WriteLine("AT+CMGW=" + number);
+            _SerialPort.WriteLine("AT+CMGS=" + "\""+number+ "\"");
             Thread.Sleep(200);
 
             //Write message
-            _SerialPort.WriteLine(msg);
-            Thread.Sleep(200);
-
-            //Write CTRL+Z to close writing buffor
-            _SerialPort.WriteLine(string.Format("whatever{0}{1}", CtrlZ, CR));
-            //or
-            //_SerialPort.WriteLine(((char)26).ToString());
-            //or
-            //string controlZ = "\u001F";
-            //_SerialPort.WriteLine(controlZ);
-            Thread.Sleep(200);
-
-            //Send message
-            _SerialPort.WriteLine("AT+CMSS=1");
+            _SerialPort.WriteLine(message+char.ConvertFromUtf32(26));
             Thread.Sleep(200);
 
         }
@@ -135,3 +122,11 @@ namespace MessageSender
         }
     }
 }
+
+//AT+CMGD=1,4 <-- clean storage
+//AT+CMGF=1 <-- text mode
+//AT+CSMP=17,168,2,25
+//AT+CSCS="UCS2" <-- message coding format (UTF-16)
+//AT+CMGS="002b00340038003600300032003700340038003300320033"<--- utf-16 <-- number +48602748323
+//> 0107017c <--ćż
+
