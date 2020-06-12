@@ -18,7 +18,7 @@ namespace MessageSender
         {
             SetPort();
             OpenPort();
-            SetGSM();
+            SetGSMModule();
         }
 
         //Close connection
@@ -57,9 +57,9 @@ namespace MessageSender
         }
 
         //Set GSM properties to send Unicode message
-        private void SetGSM()
+        private void SetGSMModule()
         {
-            //Test connection with card
+            //Test connection with SIM card
             _SerialPort.WriteLine("AT");
             Thread.Sleep(200);
             _SerialPort.ReadLine(); //AT
@@ -75,12 +75,12 @@ namespace MessageSender
             Thread.Sleep(200);
             _SerialPort.ReadLine();//OK/ERROR
 
-            //Set modem parameters
+            //Set the parameters for an outgoing message 
             _SerialPort.WriteLine("AT+CSMP=17,168,2,25");
             Thread.Sleep(200);
             _SerialPort.ReadLine();//OK/ERROR
 
-            //Set Character set to UCS2 - 16-bit universal multiple-octet coded character set
+            //Set Character set to UCS2 - 16-bit universal multiple-octet coded character set that's allows polish letters
             _SerialPort.WriteLine("AT+CSCS=\"UCS2\"");
             Thread.Sleep(200);
             _SerialPort.ReadLine();//OK/ERROR
@@ -92,13 +92,15 @@ namespace MessageSender
             string message = EncodeToUnicode(msg);
             string number = EncodeToUnicode(num);
 
-            //Write phone number
+            //Write phone number. +CMGS command giving us possibilty to send message immediately after giving text. We don't need to storage this message in memory
             _SerialPort.WriteLine("AT+CMGS=" + "\""+number+ "\"");
             Thread.Sleep(200);
 
             //Write message
             _SerialPort.WriteLine(message+char.ConvertFromUtf32(26));
             Thread.Sleep(200);
+            
+            //MESSAGE SENDED
 
         }
 
@@ -123,6 +125,7 @@ namespace MessageSender
     }
 }
 
+//AT <-- check card connection
 //AT+CMGD=1,4 <-- clean storage
 //AT+CMGF=1 <-- text mode
 //AT+CSMP=17,168,2,25
