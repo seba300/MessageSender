@@ -9,6 +9,7 @@ namespace MessageSender
     public class Person
     {
         public string Name { get; set; }
+        public int Idu { get; set; }
         public string PhoneNumber { get; set; }
     }
 }

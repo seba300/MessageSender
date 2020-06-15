@@ -24,6 +24,7 @@ namespace MessageSender
        
         public MainWindow()
         {
+            InitializeComponent();
             UploadBookList();
         }
 
@@ -40,9 +41,46 @@ namespace MessageSender
             //Combobox hidden number  
             string number = PhoneBook.SelectedValue.ToString();
             string message = Msg.Text;
+            
+            if (!String.IsNullOrWhiteSpace(message))
+            {
+                try
+                {
+                    SerialConnection serialConnection = new SerialConnection();
+                    serialConnection.SendMsg(number, message);
+                    SendedConfirmed();
+                }
+                catch (Exception)
+                {
+                    SendedInterrupted();
+                }
+            }
+        }
 
-            SerialConnection serialConnection = new SerialConnection();
-            serialConnection.SendMsg(number, message);
+        //Green info
+        private void SendedConfirmed()
+        {
+            SendInfo.Visibility = Visibility.Visible;
+            SendInfo.Foreground = Brushes.Green;
+            SendInfo.Background = Brushes.LightGreen;
+            SendInfo.BorderBrush = Brushes.Green;
+            SendInfo.Content = "Sended";
+        }
+
+        //Red info
+        private void SendedInterrupted()
+        {
+            SendInfo.Visibility = Visibility.Visible;
+            SendInfo.Foreground = Brushes.Maroon;
+            SendInfo.Background = Brushes.Red;
+            SendInfo.BorderBrush = Brushes.Maroon;
+            SendInfo.Content = "Not sended";
+        }
+
+        //Hide label with info about sending message
+        private void Msg_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SendInfo.Visibility = Visibility.Hidden;
         }
     }
 }

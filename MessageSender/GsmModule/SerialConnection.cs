@@ -80,7 +80,7 @@ namespace MessageSender
             Thread.Sleep(200);
             _SerialPort.ReadLine();//OK/ERROR
 
-            //Set Character set to UCS2 - 16-bit universal multiple-octet coded character set that's allows polish letters
+            //Set Character set to UCS2 - 16-bit universal multiple-octet coded character set that's allows polish letters <-- utf-16
             _SerialPort.WriteLine("AT+CSCS=\"UCS2\"");
             Thread.Sleep(200);
             _SerialPort.ReadLine();//OK/ERROR
@@ -104,11 +104,11 @@ namespace MessageSender
 
         }
 
-        ////Show gsm response
-        //public void ShowGsmResponse()
-        //{
-        //    MessageBox.Show(_SerialPort.ReadExisting());
-        //}
+        //Show gsm response like you write AT ... AT+CSCS ... AT+CMGS and when you call this method it will display AT..OK/ERROR ...AT+CSCS..OK/ERROR etc.
+        public void ShowFullGsmResponseToAllCommands()
+        {
+            MessageBox.Show(_SerialPort.ReadExisting());
+        }
 
         //Encode message to unicode. This is the only way to send message with all characters
         private string EncodeToUnicode(string message)
@@ -124,12 +124,3 @@ namespace MessageSender
         }
     }
 }
-
-//AT <-- check card connection
-//AT+CMGD=1,4 <-- clean storage
-//AT+CMGF=1 <-- text mode
-//AT+CSMP=17,168,2,25
-//AT+CSCS="UCS2" <-- message coding format (UTF-16)
-//AT+CMGS="002b00340038003600300032003700340038003300320033"<--- utf-16 <-- number +48602748323
-//> 0107017c <--ćż
-

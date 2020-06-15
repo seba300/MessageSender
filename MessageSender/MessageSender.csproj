@@ -64,9 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Person.cs" />
-    <Compile Include="Query.cs" />
-    <Compile Include="SerialConnection.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Data\Query.cs" />
+    <Compile Include="GsmModule\SerialConnection.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,7 +75,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DBConnection.cs" />
+    <Compile Include="Data\DBConnection.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -109,10 +109,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="message.png" />
+    <Resource Include="Images\message.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="message.jpg" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
