@@ -21,7 +21,8 @@ namespace MessageSender
     public partial class MainWindow : Window
     {
         public List<Person> PeopleList { get; set; }
-       
+        public int FromIdu { get; set; }
+        public int ToIdu { get; set; }
         public MainWindow()
         {
             InitializeComponent();
@@ -38,10 +39,11 @@ namespace MessageSender
 
         private void SendMsg_Click(object sender, RoutedEventArgs e)
         {
-            //Combobox hidden number  
-            string number = PhoneBook.SelectedValue.ToString();
+            //Combobox hidden idu
+            string number = PeopleList.Where(x => x.Idu == Convert.ToInt32(PhoneBook.SelectedValue)).Select(x => x.PhoneNumber).First();
+            ToIdu = Convert.ToInt32(PhoneBook.SelectedValue);
             string message = Msg.Text;
-            
+
             if (!String.IsNullOrWhiteSpace(message))
             {
                 try
@@ -60,16 +62,20 @@ namespace MessageSender
         //Green info
         private void SendedConfirmed()
         {
+            //Info label layout set
             SendInfo.Visibility = Visibility.Visible;
             SendInfo.Foreground = Brushes.Green;
             SendInfo.Background = Brushes.LightGreen;
             SendInfo.BorderBrush = Brushes.Green;
             SendInfo.Content = "Sended";
+
+            SendingHistory();
         }
 
         //Red info
         private void SendedInterrupted()
         {
+            //Info label layout set
             SendInfo.Visibility = Visibility.Visible;
             SendInfo.Foreground = Brushes.Maroon;
             SendInfo.Background = Brushes.Red;
@@ -81,6 +87,19 @@ namespace MessageSender
         private void Msg_TextChanged(object sender, TextChangedEventArgs e)
         {
             SendInfo.Visibility = Visibility.Hidden;
+        }
+
+        private void SendingHistory()
+        {
+            Query query = new Query();
+            query.AddToSendHistory(FromIdu, ToIdu, DateTime.Now);
+        }
+
+        private void SignOut_Click(object sender, RoutedEventArgs e)
+        {
+            SignIn signin = new SignIn();
+            signin.Show();
+            this.Close();
         }
     }
 }

@@ -21,10 +21,20 @@ namespace MessageSender
         }
 
         //Returns query result
-        public SqlDataReader GetResult(string commandText)
+        public SqlDataReader Select(string commandText)
         {
             SqlCommand command = new SqlCommand(commandText, connection);
             return command.ExecuteReader();
+        }
+
+        //Modify query 
+        public void InsertSendHistory(string commandText, int FromIdu, int ToIdu, DateTime dateTime)
+        {
+            SqlCommand command = new SqlCommand(commandText, connection);
+            command.Parameters.AddWithValue("@FromIdu", FromIdu);
+            command.Parameters.AddWithValue("@ToIdu", ToIdu);
+            command.Parameters.AddWithValue("@dateTime", dateTime);
+            command.ExecuteNonQuery();
         }
     }
 }

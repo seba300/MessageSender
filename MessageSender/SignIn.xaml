@@ -1,0 +1,18 @@
+﻿<Window x:Class="MessageSender.SignIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MessageSender"
+        mc:Ignorable="d"
+        Title="SignIn" Height="201" Width="348" ResizeMode="NoResize" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <TextBox x:Name="Login" CharacterCasing="Upper" HorizontalAlignment="Left" Height="20" Margin="192,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" TextChanged="Login_TextChanged"/>
+        <PasswordBox x:Name="Password" HorizontalAlignment="Left" Height="20" Margin="192,69,0,0" VerticalAlignment="Top" Width="130" PasswordChanged="Password_PasswordChanged"/>
+        <Image HorizontalAlignment="Left" Height="235" Margin="-15,-35,0,-26.667" VerticalAlignment="Top" Width="235" Source="SignInIcon.png" Stretch="Fill"/>
+        <Button x:Name="BSignIn" Content="Sign in" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="192,99,0,0" Click="SignIn_Click"/>
+        <Label x:Name="LogFailed" Content="Sign in failed" Visibility="Hidden" Foreground="Red" FontStyle="Italic" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="192,121,0,0" VerticalAlignment="Top" Width="130"/>
+        <Label Content="L:" Height="25" Width="19" Margin="174,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="P:" Height="29" Width="19" Margin="174,65,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    </Grid>
+</Window>

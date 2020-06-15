@@ -5,20 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MessageSender"
         mc:Ignorable="d"
-        Title="MessageSender" Height="340.333" Width="393" Icon="Images/message.png" ResizeMode="NoResize">
+        Title="MessageSender" Height="340.333" Width="393" Icon="Images/message.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBox x:Name="Msg" HorizontalAlignment="Left" Height="80" Margin="28,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" MaxLength="160" TextChanged="Msg_TextChanged"/>
         <Button x:Name="SendMsg" Content="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330" Margin="28,188,0,0" Click="SendMsg_Click" Height="35"/>
         <ComboBox x:Name="PhoneBook" HorizontalAlignment="Left" Margin="28,40,0,0" VerticalAlignment="Top" Width="330" Height="20" IsEditable="True" 
                   ItemsSource="{Binding Path=PeopleList}"
                   DisplayMemberPath="Name"
-                  SelectedValuePath="PhoneNumber"
+                  SelectedValuePath="Idu"
                   SelectedIndex="0"
                   />
         <Label Content="Contact:" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Top" Margin="22,16,0,0" Width="66" FontWeight="Bold" FontSize="14"/>
         <Label Content="Message:" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Top" Margin="22,66,0,0" Width="70" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="SendInfo" Visibility="Hidden" BorderThickness="1" FontSize="12" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Left" Width="330" Margin="28,268,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button Content="Sign out" Width="330" HorizontalAlignment="Left" Margin="28,228,0,0" VerticalAlignment="Top" Height="35"/>
+        <Button x:Name="SignOut" Content="Sign out" Width="330" HorizontalAlignment="Left" Margin="28,228,0,0" VerticalAlignment="Top" Height="35" Click="SignOut_Click"/>
 
 
 
