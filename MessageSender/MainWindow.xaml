@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MessageSender" Height="340.333" Width="393" Icon="Images/message.png" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="Msg" HorizontalAlignment="Left" Height="80" Margin="28,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" MaxLength="160" TextChanged="Msg_TextChanged"/>
+        <TextBox x:Name="Msg" MaxLength="70" HorizontalAlignment="Left" Height="80" Margin="28,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" TextChanged="Msg_TextChanged"/>
         <Button x:Name="SendMsg" Content="Send" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330" Margin="28,188,0,0" Click="SendMsg_Click" Height="35"/>
         <ComboBox x:Name="PhoneBook" HorizontalAlignment="Left" Margin="28,40,0,0" VerticalAlignment="Top" Width="330" Height="20" IsEditable="True" 
                   ItemsSource="{Binding Path=PeopleList}"
