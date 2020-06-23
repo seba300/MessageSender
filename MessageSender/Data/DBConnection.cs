@@ -9,7 +9,7 @@ namespace MessageSender
 {
     public class DBConnection
     {
-        private static string connectionString { get; set; } = @"Data Source=B2B\SQLEXPRESS;Initial Catalog=HardwareStore;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private static string connectionString { get; set; } = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=HardwareStore;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         private SqlConnection connection { get; set; } = new SqlConnection(connectionString);
         public DBConnection()
         {

@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -100,6 +101,15 @@ namespace MessageSender
             SignIn signin = new SignIn();
             signin.Show();
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ColorDialog cdg = new ColorDialog();
+            if(cdg.ShowDialog()==System.Windows.Forms.DialogResult.OK)
+            {
+                Tab.Background = new SolidColorBrush(Color.FromArgb(cdg.Color.A, cdg.Color.R, cdg.Color.G, cdg.Color.B));
+            }
         }
     }
 }
