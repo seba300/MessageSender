@@ -24,7 +24,7 @@
                     <Label x:Name="SendInfo" Visibility="Hidden" BorderThickness="1" FontSize="12" FontStyle="Italic" FontWeight="Bold" HorizontalAlignment="Left" Width="330" Margin="28,283,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                     <Button x:Name="SignOut" Content="Sign out" Width="330" HorizontalAlignment="Left" Margin="28,233,0,0" VerticalAlignment="Top" Height="35" Click="SignOut_Click"/>
                     <Button Content="Set background color" HorizontalAlignment="Left" Margin="237,349,0,0" VerticalAlignment="Top" Width="123" Click="Button_Click"/>
-
+                    <Button Content="Customize font" Margin="237,325,23,40" Click="Button_Click_1"></Button>
                 </Grid>
             </TabItem>
 

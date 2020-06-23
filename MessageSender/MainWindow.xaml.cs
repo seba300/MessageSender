@@ -111,6 +111,18 @@ namespace MessageSender
                 Tab.Background = new SolidColorBrush(Color.FromArgb(cdg.Color.A, cdg.Color.R, cdg.Color.G, cdg.Color.B));
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            FontDialog fd = new FontDialog();
+            if(fd.ShowDialog()==System.Windows.Forms.DialogResult.OK)
+            {
+                Msg.FontFamily = new FontFamily(fd.Font.Name);
+                Msg.FontSize = fd.Font.Size * 98 / 72;
+                Msg.FontWeight = fd.Font.Bold ? FontWeights.Bold : FontWeights.Regular;
+                Msg.FontStyle = fd.Font.Italic ? FontStyles.Italic : FontStyles.Normal;
+            }
+        }
     }
 }
 
